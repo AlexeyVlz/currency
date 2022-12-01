@@ -5,6 +5,8 @@ import currency.model.currency.pair.dto.CurrencyPairDtoIn;
 import currency.service.currency.pairs.CurrencyPairsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +25,10 @@ public class CurrencyPairsController {
     private final CurrencyPairsService currencyPairsService;
 
     @GetMapping("/currency-pairs")
-    public List<AbstractCurrencyPairDto> getCurrencyPairs() {
+    public ResponseEntity<Object> getCurrencyPairs() {
         log.info("Получен запрос к эндпоинту: GET /currency-pairs");
-        return currencyPairsService.getCurrencyPairs();
+        List<AbstractCurrencyPairDto> pairs = currencyPairsService.getCurrencyPairs();
+        return new ResponseEntity<>(pairs, HttpStatus.OK);
     }
 
     @PostMapping("/create-currency-pair")
