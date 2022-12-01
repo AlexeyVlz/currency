@@ -32,7 +32,8 @@ public class Service {
         List<CurrencyPair> pairs = getCurrencyPairs();
         ActualCurrencyRates currencyRates = getActualCurrencyRates();
         List<ExchangeRate> exchangeRates = createExchangeRates(pairs, currencyRates);
-        exchangeRateRepository.saveAll(exchangeRates);
+        List<ExchangeRate> list = exchangeRateRepository.saveAll(exchangeRates);
+        log.info("Курсы валют сохранены" + list);
     }
 
     private List<ExchangeRate> createExchangeRates(List<CurrencyPair> pairs, ActualCurrencyRates currencyRates) {
