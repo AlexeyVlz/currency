@@ -12,4 +12,7 @@ public class ActualCurrencyRates {
     private String timestamp;
     private String base;
     private HashMap<String, Double> rates;
+
+    public ActualCurrencyRates() {
+    }
 }

@@ -22,6 +22,6 @@ public class Service {
     }
 
     public void getActualCurrencyRates(){
-        log.info(String.valueOf(client.getActualCurrencyRates().getBody()));
+        log.info("log: " + String.valueOf(client.getActualCurrencyRates().getBody()));
     }
 }
