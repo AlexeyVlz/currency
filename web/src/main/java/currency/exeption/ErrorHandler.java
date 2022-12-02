@@ -20,6 +20,12 @@ public class ErrorHandler {
     }
 
     @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleDataNotFound(final DataNotFound e) {
+        return newApiError(e, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ApiError handleThrowable(final Throwable e) {
         return newApiError(e, HttpStatus.INTERNAL_SERVER_ERROR);

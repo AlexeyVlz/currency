@@ -29,7 +29,7 @@ public class Client {
         HttpEntity<Object> requestEntity = new HttpEntity<>(null, headers);
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.exchange(
-                "http://localhost:8080" + "/currency-pairs",
+                "http://web:8080" + "/currency-pairs",
                 HttpMethod.GET,
                 requestEntity,
                 CurrencyPair[].class
