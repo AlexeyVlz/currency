@@ -11,6 +11,7 @@ public interface ExchangeRateRepository extends JpaRepository<ExchangeRate, Inte
     @Query("select e.rateValue from ExchangeRate e where e.id = ?1 and e.rateDate = ?2")
     Double getExchangeRate(Integer id, LocalDate date);
 
-    @Query("select e.rateValue from ExchangeRate e where e.id = ?1 order by e.rateDate desc , limit (1)")
+    @Query(value = "select e.rate_value from exchange_rate e where e.currency_pair_id = ?1 " +
+            "order by e.rate_date desc limit 1", nativeQuery = true)
     Double getCurrentExchangeRate(Integer id);
 }

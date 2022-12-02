@@ -8,6 +8,7 @@ import currency.model.currency.pair.dto.CurrencyPairDtoIn;
 import currency.repository.CurrencyPairRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class CurrencyPairsServiceImpl implements CurrencyPairsService{
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public AbstractCurrencyPairDto addCurrencyPair(CurrencyPairDtoIn currencyPairDtoIn) {
         if (currencyPairRepository.findCurrencyPair(currencyPairDtoIn.getBaseCharcode(),
                 currencyPairDtoIn.getQuotedCharcode()) != null)
